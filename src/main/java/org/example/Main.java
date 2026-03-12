@@ -2,19 +2,29 @@ package org.example;
 
 import org.example.dao.*;
 import org.example.models.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    static DoctorDAO doctorDAO = new DoctorDAO();
-    static SpringPatientDAO patientDAO = new SpringPatientDAO();
-    static AppointmentDAO appointmentDAO = new AppointmentDAO();
-    static MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
+    static SpringDoctorDAO doctorDAO;
+    static SpringPatientDAO patientDAO;
+    static SpringAppointmentDAO appointmentDAO;
+    static SpringMedicalRecordDAO medicalRecordDAO;
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        // Spring context - loads all beans
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        doctorDAO = context.getBean(SpringDoctorDAO.class);
+        patientDAO = context.getBean(SpringPatientDAO.class);
+        appointmentDAO = context.getBean(SpringAppointmentDAO.class);
+        medicalRecordDAO = context.getBean(SpringMedicalRecordDAO.class);
+
+
         String choice = "";
 
         while (!choice.equals("0")) {
