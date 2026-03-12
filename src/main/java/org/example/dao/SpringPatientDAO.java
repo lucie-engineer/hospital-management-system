@@ -2,12 +2,20 @@ package org.example.dao;
 
 import org.example.db.Databaseconnection;
 import org.example.models.Patient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientDAO {
+
+
+@Repository
+public class SpringPatientDAO {
+
+    @Autowired
+
 
     // ADD a new patient
     public void addPatient(Patient patient) {

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
 
     static DoctorDAO doctorDAO = new DoctorDAO();
-    static PatientDAO patientDAO = new PatientDAO();
+    static SpringPatientDAO patientDAO = new SpringPatientDAO();
     static AppointmentDAO appointmentDAO = new AppointmentDAO();
     static MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
     static Scanner scanner = new Scanner(System.in);
