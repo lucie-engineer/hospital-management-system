@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class SpringPatientDAO {
 
 
     // ADD a new patient
+    @Transactional
     public void addPatient(Patient patient) {
         String sql = "INSERT INTO patients (first_name, last_name, date_of_birth, gender, phone_number, email) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -62,6 +64,7 @@ public class SpringPatientDAO {
     }
 
     // UPDATE a patient
+    @Transactional
     public void updatePatient(Patient patient) {
         String sql = "UPDATE patients SET first_name=?, last_name=?, date_of_birth=?, gender=?, phone_number=?, email=? WHERE id=?";
 
@@ -77,6 +80,7 @@ public class SpringPatientDAO {
     }
 
     // DELETE a patient
+    @Transactional
     public void deletePatient(int id) {
         String sql = "DELETE FROM patients WHERE id = ?";
 
